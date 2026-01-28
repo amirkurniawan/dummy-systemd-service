@@ -1,0 +1,21 @@
+[Unit]
+Description=Dummy Service - Background Application Simulator
+Documentation=https://roadmap.sh/projects/dummy-systemd-service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/dummy.sh
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Security hardening (optional but recommended)
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log
+
+[Install]
+WantedBy=multi-user.target
